@@ -1,0 +1,50 @@
+import java.util.ArrayList;
+public class CDcollection{
+	private ArrayList<Cd> cds;	
+	
+		//construtor
+	public CDcollection(){
+		cds = new ArrayList<Cd>();	
+	}
+	public void storeCd(Cd cd){ //adiciona um novo cd
+		cds.add(cd);	
+	}
+	public int numberOfCds(){ //retorna o numero de cds adicionados
+		return cds.size();
+	}
+	
+	public void removeCd(String titulocd){ //metodo para remover um cd pelo titulocd
+		if(verificarCD(titulocd)){
+			for (int i = 0; i<cds.size();i++){
+				Cd get = cds.get(i);
+				if(get.getTitulo().equals(titulocd)){
+					cds.remove(i);
+				}			
+			}
+		}
+		else{
+			System.out.println(titulocd+" - Titulo do CD não encontrado");
+		}
+	}
+	
+	public void showCds(){ //mostra todos os cds armazenados no ArrayList
+		for(int i = 0; i<cds.size();i++){
+			Cd get = cds.get(i);
+			System.out.println("Titulo: "+get.getTitulo());
+			System.out.println("Artista: "+get.getArtista());
+			System.out.println("Numero de Faixas: "+get.getNumtrilha());		
+		}
+	}
+	public boolean verificarCD(String titulocd){ //verifica se o CD está Armazenado no ArrayList
+		for (int i = 0; i<cds.size();i++){
+			Cd get = cds.get(i);
+			if(get.getTitulo().equals(titulocd)){
+				return true;
+			}
+		}	
+		return false;
+	}
+
+	
+	
+}
